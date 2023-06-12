@@ -1,0 +1,34 @@
+<form [formGroup]="ashish" autocomplete="off">
+    <div class="heading">
+        <p>EMPLOYEE ENFORMATION FORM</p>
+    </div>
+    <div *ngIf="dataSubmitted" class="alert alert-success" role="alert">
+        Success
+    </div>
+    <div class="mb-3">
+        <label for="employeeName" class="form-label">Employees Name</label>
+        <input type="text" formControlName="employeeName" class="form-control">
+        <span class="email-error-field"
+                                *ngIf="employeeName && employeeName.hasError('required') && (employeeName.touched || isSubmitted)">This
+                                Field is required
+                            </span>
+    </div>
+    <div class="mb-3">
+        <label for="departments" class="form-label">Departments</label>
+        <input type="text" formControlName="departments" class="form-control">
+        <span class="email-error-field"
+                                *ngIf="departments && departments.hasError('required') && (departments.touched || isSubmitted)">This
+                                Field is required
+                            </span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Salary</label>
+        <input type="number" class="form-control" formControlName="salary">
+        <span class="email-error-field"
+                                *ngIf="salary && salary.hasError('required') && (salary.touched || isSubmitted)">This
+                                Field is required
+                            </span>
+    </div>
+    <button *ngIf="!update" type="submit" class="btn btn-primary" (click)="addForm()">Submit</button>
+    <button *ngIf="update" type="submit" (click)="editForm()" class="btn btn-primary">Update</button>
+</form>
